@@ -123,28 +123,31 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
-                @foreach ($cakes as $cake)
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img style="" src="{{ $cake['images'] ? Storage::url($cake['images']) : '' }}"
-                                    alt="">
-                                {{-- <img src="{{ asset('img/shop/product-1.jpg') }}" alt=""> --}}
-                                <div class="product__label">
-                                    <span>Cupcake</span>
+                @if (!empty($cakes))
+                    @foreach ($cakes as $cake)
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg">
+                                    <img style="" src="{{ $cake['images'] ? Storage::url($cake['images']) : '' }}"
+                                        alt="">
+                                    {{-- <img src="{{ asset('img/shop/product-1.jpg') }}" alt=""> --}}
+                                    <div class="product__label">
+                                        <span>Cupcake</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Dozen Cupcakes</a></h6>
-                                <div class="product__item__price">$32.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                <div class="product__item__text">
+                                    <h6><a href="/cake/{{ $cake['id'] }}">{{ $cake['name'] }}</a></h6>
+                                    <div class="product__item__price">{{ $cake['price'] }}VND</div>
+                                    <div class="cart_add">
+                                        <a href="#">Add to cart</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-
+                    @endforeach
+                @else
+                    <h3>Do not have a products now!</h3>
+                @endif
             </div>
     </section>
     <!-- Product Section End -->

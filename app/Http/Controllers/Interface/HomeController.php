@@ -16,4 +16,12 @@ class HomeController extends Controller
 
         return view('index', compact('cakes'));
     }
+    public function about()
+    {
+        return view('Interface.about.about');
+    }
+    public function login()
+    {
+        return view('Interface.auth.login');
+    }
 }
